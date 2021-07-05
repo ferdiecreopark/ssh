@@ -1,0 +1,79 @@
+<?php
+/**
+ * Template for Single post
+ *
+ * @package     Astra
+ * @author      Astra
+ * @copyright   Copyright (c) 2020, Astra
+ * @link        https://wpastra.com/
+ * @since       Astra 1.0.0
+ */
+
+?>
+
+<div class="alignfull has-background">
+    <div class="wp-block-group__inner-container pt-5 pb-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <?php echo '<div class="crumbs"><a href="'.home_url().'" rel="nofollow">Home</a> &nbsp;&nbsp;&#187;&nbsp;&nbsp; <a href="'.home_url('aktuelt').'" rel="nofollow">Aktuelt</a> &nbsp;&nbsp;&#187;&nbsp;&nbsp; '.get_the_title().'</div>'; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+$featured = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+$section1_html = '<div class="alignfull has-white-background-color has-background pt-3">
+<div class="">
+
+<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="aligncenter">'.get_the_title().'</h1>
+			</div>
+		</div>
+</div>
+<div class="container">
+
+	<div class="row">
+		<div class="col-12 mt-5 p-0">
+			<img src ="'.$featured.'" class="object-fit-featured img-fluid">
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-12 pl-5 pr-5 pt-5">
+			<h2>'.get_the_excerpt().'</h2>
+		</div>
+		<div class="col-12 pl-5 pr-5 pt-5">
+			'.get_the_content().'
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+';
+echo $section1_html;
+?>
+
+<div class="container">
+
+	<div class="row">
+		<div class="col-12 mt-5 p-0">
+	<?php
+			wp_link_pages(
+				array(
+					'before'      => '<div class="page-links">' . esc_html( astra_default_strings( 'string-single-page-links-before', false ) ),
+					'after'       => '</div>',
+					'link_before' => '<span class="page-link">',
+					'link_after'  => '</span>',
+				)
+			);
+			?>
+
+</div>
+
+</div>
+</div>
